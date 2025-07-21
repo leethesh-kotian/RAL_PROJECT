@@ -1,24 +1,30 @@
 class ral_test extends uvm_test;
   `uvm_component_utils(ral_test)
 
-  function new(input string inst = "ral_test", uvm_component c);
-    super.new(inst, c);
-  endfunction
+  ral_env env;
 
-  apb_env env;
-  apb_reg_seq trseq;
+  function new(string name = "ral_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    env = ral_env::type_id::create("ral_env", this);
-    trseq = ral_reg_seq::type_id::create("trseq");
+    env = ral_env::type_id::create("env", this);
   endfunction
 
   virtual task run_phase(uvm_phase phase);
+    ral_sequence seq;
     phase.raise_objection(this);
-    trseq.regmodel = env.regmodel;
-    trseq.start(env.agent_inst.seqr);
+
+    seq = ral_sequence::type_id::create("seq");
+
+    // ✅ Assign regmodel handle before starting
+    seq.regmodel = env.regmodel;
+
+    // ✅ Start the sequence on agent_inst.seqr (which is connected to RAL)
+    seq.start(env.agent_inst.seqr);
+
     phase.drop_objection(this);
-    phase.phase_done.set_drain_time(this, 200);
   endtask
 endclass
+

@@ -1,28 +1,32 @@
 class ral_adapter extends uvm_reg_adapter;
-  `uvm_object_utils (top_adapter)
+  `uvm_object_utils(ral_adapter)
 
-  function new (string name = "ral_adapter");
-    super.new (name);
+  function new(string name = "ral_adapter");
+    super.new(name);
+    supports_byte_enable = 0;
   endfunction
 
-  function uvm_sequence_item reg2bus(const ref uvm_reg_bus_op rw);
-    ral_item ral;
-    ral = apb_item::type_id::create("ral");
-    ral.pwrite = (rw.kind == UVM_WRITE) ? 1'b1 : 1'b0;
-    ral.paddr = rw.addr;
-    ral.pwdata = rw.data;
-    return ral;
+  virtual function uvm_sequence_item reg2bus(const ref uvm_reg_bus_op rw);
+    ral_seq_item tr;
+    tr = ral_seq_item::type_id::create("tr");
+
+    tr.paddr  = rw.addr;
+    tr.pwrite = (rw.kind == UVM_WRITE);
+    tr.pwdata = rw.data;
+
+    return tr;
   endfunction
-endclass
 
-function void bus2reg(uvm_sequence_item bus_item, ref uvm_reg_bus_op rw);
-  ral_item ral;
-  assert($cast(ral, bus_item));
+  virtual function void bus2reg(uvm_sequence_item bus_item,
+                                ref uvm_reg_bus_op rw);
+    ral_seq_item tr;
+    if (!$cast(tr, bus_item))
+      `uvm_fatal("RAL_ADAPTER", "bus2reg: cast failed")
 
-  rw.kind = (ral.pwrite == 1'b1) ? UVM_WRITE : UVM_READ;
-  rw.data = (ral.pwrite == 1'b1) ? ral.pwdata : ral.prdata;
-  rw.addr = ral.paddr;
-  rw.status = UVM_IS_OK;
-endfunction
+    rw.kind   = tr.pwrite ? UVM_WRITE : UVM_READ;
+    rw.addr   = tr.paddr;
+    rw.data   = tr.prdata;
+    rw.status = UVM_IS_OK;
+  endfunction
 endclass
 

@@ -1,26 +1,50 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-`include "design.sv"
+`include "design.v"
 `include "ral_package.sv"
-module tb;
 
-  apb_if vif;
-  top dut(vif.PCLK,vif.PRESETn,vif.SEL,vif.PENABLE,vif.PWRITE,vif.PADDR,vif.PWDATA,vif.PRDATA);
+module tb;
+  bit pclk,presetn;
+  // Instantiate interface
+  ral_if vif(.pclk(pclk),.presetn(presetn));
+
+  // Connect DUT with interface signals (all lowercase to match your design)
+  top dut (
+    .pclk     (vif.pclk),
+    .presetn  (vif.presetn),
+    .psel     (vif.psel),
+    .penable  (vif.penable),
+    .pwrite   (vif.pwrite),
+    .paddr    (vif.paddr),
+    .pwdata   (vif.pwdata),
+    .prdata   (vif.prdata)
+  );
+
+  // Clock generation
+  //initial begin
+//    pclk = 0;
+    always #5 pclk = ~pclk;
+ // end
   
   initial begin
-    vif.PCLK<=0;
+  pclk = 0;
+
+  presetn = 1;
+  #10 
+  presetn = 0;
   end
-  
-  always #10 vif.PCLK =~vif.PCLK;
-  
+
+  // UVM config DB and test start
   initial begin
-    uvm_config_db #(virtual apb_if)::set(null,"*","vif",vif);
-    
-    run_test("test");
+    uvm_config_db #(virtual ral_if)::set(null, "*", "vif", vif);
+    run_test("ral_test");  // Use the actual test name defined with `uvm_component_utils(ral_test)`
   end
-  
+
+  // Dumpfile for waveform viewing
   initial begin
     $dumpfile("dump.vcd");
-    $dumpvars;
+    $dumpvars(0, tb);
   end
+
 endmodule
+
