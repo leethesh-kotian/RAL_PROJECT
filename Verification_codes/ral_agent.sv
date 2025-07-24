@@ -3,7 +3,8 @@ class ral_agent extends uvm_agent;
 
   ral_monitor mon;
   ral_driver drv;
-  uvm_sequencer #(ral_seq_item) seqr;
+  ral_sequencer seqr;
+ // uvm_sequencer #(ral_seq_item) seqr;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -13,7 +14,8 @@ class ral_agent extends uvm_agent;
     super.build_phase(phase);
     mon = ral_monitor::type_id::create("mon", this);
     drv = ral_driver::type_id::create("drv", this);
-    seqr = uvm_sequencer#(ral_seq_item)::type_id::create("seqr", this);
+   seqr = ral_sequencer::type_id::create("seqr",this);
+// seqr = uvm_sequencer#(ral_seq_item)::type_id::create("seqr", this);
   endfunction
 
   function void connect_phase(uvm_phase phase);

@@ -1,6 +1,6 @@
-# vsim -c tb -do "run -all;exit" 
-# Start time: 14:17:29 on Jul 21,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# vsim -c tb -do "run -all ;exit;" 
+# Start time: 10:18:31 on Jul 24,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -22,7 +22,7 @@
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.ral_if(fast)
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
-# run -all
+# run -all 
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -46,33 +46,54 @@
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO @ 0: reporter [RNTST] Running test ral_test...
-# UVM_INFO ral_sequence.sv(16) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Initial Register Value : 0
-# UVM_INFO ral_driver.sv(45) @ 15: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x4, DATA: 0x55
+# UVM_INFO ral_sequence.sv(19) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 Initial -> Desired: 0, Mirrored: 0
+# UVM_INFO ral_driver.sv(106) @ 25: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x4, DATA: 0x55
 # UVM_INFO ral_scoreboard.sv(19) @ 25: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = 55
 # UVM_INFO ral_monitor.sv(33) @ 25: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0x55 | prdata: 0x0
-# UVM_INFO ral_sequence.sv(24) @ 25: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Updated Register Value : 85
-# UVM_INFO ral_driver.sv(45) @ 45: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x8, DATA: 0xaa
-# UVM_INFO ral_scoreboard.sv(19) @ 55: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = aa
-# UVM_INFO ral_monitor.sv(33) @ 55: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0xaa | prdata: 0x0
-# UVM_INFO ral_sequence.sv(32) @ 55: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Final Register Value : 170
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 55: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ral_sequence.sv(26) @ 35: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 After update -> Desired: 85, Mirrored: 85
+# UVM_INFO ral_scoreboard.sv(19) @ 55: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = 5
+# UVM_INFO ral_monitor.sv(33) @ 55: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0x5 | prdata: 0x0
+# UVM_INFO ral_driver.sv(106) @ 65: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x4, DATA: 0x5
+# UVM_INFO ral_scoreboard.sv(25) @ 85: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = 0, Data = 0
+# UVM_INFO ral_monitor.sv(33) @ 85: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x0 | pwdata: 0x0 | prdata: 0x0
+# UVM_ERROR ral_scoreboard.sv(23) @ 115: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 4 | Expected = 5 | Got = 0
+# UVM_INFO ral_monitor.sv(33) @ 115: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x4 | pwdata: 0x0 | prdata: 0x0
+# UVM_INFO ral_driver.sv(104) @ 125: uvm_test_top.env.agent_inst.drv [DRV] READ -> ADDR: 0x4, DATA: 0x0
+# UVM_INFO ral_sequence.sv(33) @ 135: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 Final -> Desired: 0, Mirrored: 0, Read: 0
+# UVM_INFO ral_sequence.sv(38) @ 135: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 Initial -> Desired: 0, Mirrored: 0
+# UVM_INFO ral_scoreboard.sv(25) @ 145: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = 0, Data = 0
+# UVM_INFO ral_monitor.sv(33) @ 145: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x0 | pwdata: 0x0 | prdata: 0x0
+# UVM_INFO ral_driver.sv(106) @ 165: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x8, DATA: 0xaa
+# UVM_INFO ral_scoreboard.sv(19) @ 175: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = aa
+# UVM_INFO ral_monitor.sv(33) @ 175: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0xaa | prdata: 0x0
+# UVM_INFO ral_sequence.sv(45) @ 175: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 After update -> Desired: 170, Mirrored: 170
+# UVM_INFO ral_driver.sv(106) @ 205: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x8, DATA: 0xf
+# UVM_INFO ral_scoreboard.sv(19) @ 205: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = f
+# UVM_INFO ral_monitor.sv(33) @ 205: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0xf | prdata: 0x0
+# UVM_ERROR ral_scoreboard.sv(23) @ 235: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 8 | Expected = f | Got = 0
+# UVM_INFO ral_monitor.sv(33) @ 235: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x0
+# UVM_INFO ral_driver.sv(104) @ 265: uvm_test_top.env.agent_inst.drv [DRV] READ -> ADDR: 0x8, DATA: 0x0
+# UVM_ERROR ral_scoreboard.sv(23) @ 265: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 8 | Expected = f | Got = 0
+# UVM_INFO ral_monitor.sv(33) @ 265: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x0
+# UVM_INFO ral_sequence.sv(52) @ 275: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 Final -> Desired: 0, Mirrored: 0, Read: 0
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 275: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   13
+# UVM_INFO :   31
 # UVM_WARNING :    0
-# UVM_ERROR :    0
+# UVM_ERROR :    3
 # UVM_FATAL :    0
 # ** Report counts by id
-# [DRV]     2
-# [MON]     2
+# [DRV]     6
+# [MON]     9
 # [Questa UVM]     2
 # [RNTST]     1
-# [SCOREBOARD]     2
-# [SEQ]     3
+# [SCOREBOARD]     9
+# [SEQ]     6
 # [TEST_DONE]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 55 ns  Iteration: 61  Instance: /tb
-# End time: 14:17:30 on Jul 21,2025, Elapsed time: 0:00:01
+#    Time: 275 ns  Iteration: 61  Instance: /tb
+# End time: 10:18:43 on Jul 24,2025, Elapsed time: 0:00:12
 # Errors: 0, Warnings: 0
