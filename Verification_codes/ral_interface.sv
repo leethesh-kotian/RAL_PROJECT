@@ -1,4 +1,4 @@
-interface ral_if(input logic pclk, input logic presetn);
+interface ral_if(input logic pclk, input bit presetn);
 
   logic        psel;
   logic        penable;

@@ -1,6 +1,3 @@
-# vsim -c tb -do "run -all ;exit;" 
-# Start time: 10:18:31 on Jul 24,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -15,14 +12,53 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
+# vsim $ 
+# Start time: 12:09:39 on Jul 24,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-13130) Failed to find design unit $.
+#         Searched libraries:
+#             work
+# Optimization failed
+# Error loading design
+# End time: 12:09:40 on Jul 24,2025, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/ral_top.sv
+# QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
+# Start time: 12:09:47 on Jul 24,2025
+# vlog -reportprogress 300 -work work /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/ral_top.sv 
+# ** Note: (vlog-2286) /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/ral_top.sv(1): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# ** Warning: /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/ral_top.sv(2): (vlog-13233) Design unit "ral_top_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+# -- Compiling package ral_top_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Compiling module top
+# -- Compiling interface ral_if
+# -- Compiling module tb
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 12:09:47 on Jul 24,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vsim -c -novopt -suppress 12110 tb
+# vsim -c -novopt -suppress 12110 tb 
+# Start time: 12:10:12 on Jul 24,2025
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Refreshing /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/work.tb
+# Refreshing /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/work.ral_top_sv_unit
 # Loading sv_std.std
 # Loading mtiUvm.uvm_pkg
-# Loading work.ral_top_sv_unit(fast)
-# Loading work.tb(fast)
-# Loading mtiUvm.questa_uvm_pkg(fast)
-# Loading work.ral_if(fast)
+# Loading work.ral_top_sv_unit
+# Loading work.tb
+# Refreshing /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/work.ral_if
+# Loading work.ral_if
+# Refreshing /fetools/work_area/frontend/leethesh/ral_project/RAL_PROJECT/Verification_codes/work.top
+# Loading work.top
+# Loading mtiUvm.questa_uvm_pkg
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
-# run -all 
+view -new wave
+# .main_pane.wave5.interior.cs.body.pw.wf
+add wave -position insertpoint sim:/tb/dut/*
+run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -45,55 +81,70 @@
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
-# UVM_INFO @ 0: reporter [RNTST] Running test ral_test...
-# UVM_INFO ral_sequence.sv(19) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 Initial -> Desired: 0, Mirrored: 0
-# UVM_INFO ral_driver.sv(106) @ 25: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x4, DATA: 0x55
-# UVM_INFO ral_scoreboard.sv(19) @ 25: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = 55
-# UVM_INFO ral_monitor.sv(33) @ 25: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0x55 | prdata: 0x0
-# UVM_INFO ral_sequence.sv(26) @ 35: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 After update -> Desired: 85, Mirrored: 85
-# UVM_INFO ral_scoreboard.sv(19) @ 55: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = 5
-# UVM_INFO ral_monitor.sv(33) @ 55: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0x5 | prdata: 0x0
-# UVM_INFO ral_driver.sv(106) @ 65: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x4, DATA: 0x5
+# UVM_INFO @ 0: reporter [RNTST] Running test ral_write_read_test...
+# UVM_INFO ral_scoreboard.sv(19) @ 25: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = a5
+# UVM_INFO ral_monitor.sv(33) @ 25: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0xa5 | prdata: 0x0
+# UVM_INFO ral_scoreboard.sv(19) @ 55: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 4, Data = a5
+# UVM_INFO ral_monitor.sv(33) @ 55: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x4 | pwdata: 0xa5 | prdata: 0x0
+# UVM_INFO ral_driver.sv(120) @ 55: uvm_test_top.env.agent_inst.drv [DRV] Data Write -> Wdata : a5
 # UVM_INFO ral_scoreboard.sv(25) @ 85: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = 0, Data = 0
 # UVM_INFO ral_monitor.sv(33) @ 85: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x0 | pwdata: 0x0 | prdata: 0x0
-# UVM_ERROR ral_scoreboard.sv(23) @ 115: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 4 | Expected = 5 | Got = 0
+# UVM_ERROR ral_scoreboard.sv(23) @ 115: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 4 | Expected = a5 | Got = 0
 # UVM_INFO ral_monitor.sv(33) @ 115: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x4 | pwdata: 0x0 | prdata: 0x0
-# UVM_INFO ral_driver.sv(104) @ 125: uvm_test_top.env.agent_inst.drv [DRV] READ -> ADDR: 0x4, DATA: 0x0
-# UVM_INFO ral_sequence.sv(33) @ 135: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 Final -> Desired: 0, Mirrored: 0, Read: 0
-# UVM_INFO ral_sequence.sv(38) @ 135: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 Initial -> Desired: 0, Mirrored: 0
-# UVM_INFO ral_scoreboard.sv(25) @ 145: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = 0, Data = 0
-# UVM_INFO ral_monitor.sv(33) @ 145: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x0 | pwdata: 0x0 | prdata: 0x0
-# UVM_INFO ral_driver.sv(106) @ 165: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x8, DATA: 0xaa
-# UVM_INFO ral_scoreboard.sv(19) @ 175: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = aa
-# UVM_INFO ral_monitor.sv(33) @ 175: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0xaa | prdata: 0x0
-# UVM_INFO ral_sequence.sv(45) @ 175: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 After update -> Desired: 170, Mirrored: 170
-# UVM_INFO ral_driver.sv(106) @ 205: uvm_test_top.env.agent_inst.drv [DRV] WRITE -> ADDR: 0x8, DATA: 0xf
-# UVM_INFO ral_scoreboard.sv(19) @ 205: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = f
-# UVM_INFO ral_monitor.sv(33) @ 205: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0xf | prdata: 0x0
-# UVM_ERROR ral_scoreboard.sv(23) @ 235: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 8 | Expected = f | Got = 0
-# UVM_INFO ral_monitor.sv(33) @ 235: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x0
-# UVM_INFO ral_driver.sv(104) @ 265: uvm_test_top.env.agent_inst.drv [DRV] READ -> ADDR: 0x8, DATA: 0x0
-# UVM_ERROR ral_scoreboard.sv(23) @ 265: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 8 | Expected = f | Got = 0
-# UVM_INFO ral_monitor.sv(33) @ 265: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x0
-# UVM_INFO ral_sequence.sv(52) @ 275: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 Final -> Desired: 0, Mirrored: 0, Read: 0
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 275: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ral_driver.sv(133) @ 135: uvm_test_top.env.agent_inst.drv [DRV] Data READ -> read data : 5a5a5555
+# UVM_ERROR ral_scoreboard.sv(23) @ 145: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 4 | Expected = a5 | Got = 5a5a5555
+# UVM_INFO ral_monitor.sv(33) @ 145: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x4 | pwdata: 0x0 | prdata: 0x5a5a5555
+# UVM_INFO ral_sequence.sv(79) @ 155: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R1 -> Written: 165, Read: 1515869525, Mirrored: 1515869525
+# UVM_INFO ral_scoreboard.sv(19) @ 175: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = 3c
+# UVM_INFO ral_monitor.sv(33) @ 175: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0x3c | prdata: 0x5a5a5555
+# UVM_INFO ral_scoreboard.sv(19) @ 205: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = 3c
+# UVM_INFO ral_monitor.sv(33) @ 205: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0x3c | prdata: 0x5a5a5555
+# UVM_INFO ral_driver.sv(120) @ 215: uvm_test_top.env.agent_inst.drv [DRV] Data Write -> Wdata : 3c
+# UVM_INFO ral_scoreboard.sv(19) @ 235: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = 8, Data = 3c
+# UVM_INFO ral_monitor.sv(33) @ 235: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0x8 | pwdata: 0x3c | prdata: 0x5a5a5555
+# UVM_ERROR ral_scoreboard.sv(23) @ 265: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 8 | Expected = 3c | Got = 5a5a5555
+# UVM_INFO ral_monitor.sv(33) @ 265: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x5a5a5555
+# UVM_INFO ral_scoreboard.sv(25) @ 295: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = 8, Data = 3c
+# UVM_INFO ral_monitor.sv(33) @ 295: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x8 | pwdata: 0x0 | prdata: 0x3c
+# UVM_INFO ral_driver.sv(133) @ 295: uvm_test_top.env.agent_inst.drv [DRV] Data READ -> read data : 3c
+# UVM_INFO ral_sequence.sv(88) @ 315: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R2 -> Written: 60, Read: 60, Mirrored: 60
+# UVM_ERROR ral_scoreboard.sv(23) @ 325: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = 0 | Expected = 0 | Got = 3c
+# UVM_INFO ral_monitor.sv(33) @ 325: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0x0 | pwdata: 0x0 | prdata: 0x3c
+# UVM_INFO ral_scoreboard.sv(19) @ 355: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = c, Data = 7e
+# UVM_INFO ral_monitor.sv(33) @ 355: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0xc | pwdata: 0x7e | prdata: 0x3c
+# UVM_INFO ral_driver.sv(120) @ 375: uvm_test_top.env.agent_inst.drv [DRV] Data Write -> Wdata : 7e
+# UVM_INFO ral_scoreboard.sv(19) @ 385: uvm_test_top.env.sc [SCOREBOARD] WRITE: Addr = c, Data = 7e
+# UVM_INFO ral_monitor.sv(33) @ 385: uvm_test_top.env.agent_inst.mon [MON] pwrite: 1 | paddr: 0xc | pwdata: 0x7e | prdata: 0x3c
+# UVM_ERROR ral_scoreboard.sv(23) @ 415: uvm_test_top.env.sc [SCOREBOARD] MISMATCH at Addr = c | Expected = 7e | Got = 3c
+# UVM_INFO ral_monitor.sv(33) @ 415: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0xc | pwdata: 0x0 | prdata: 0x3c
+# UVM_INFO ral_scoreboard.sv(25) @ 445: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = c, Data = 7e
+# UVM_INFO ral_monitor.sv(33) @ 445: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0xc | pwdata: 0x0 | prdata: 0x7e
+# UVM_INFO ral_driver.sv(133) @ 455: uvm_test_top.env.agent_inst.drv [DRV] Data READ -> read data : 7e
+# UVM_INFO ral_scoreboard.sv(25) @ 475: uvm_test_top.env.sc [SCOREBOARD] READ MATCH: Addr = c, Data = 7e
+# UVM_INFO ral_monitor.sv(33) @ 475: uvm_test_top.env.agent_inst.mon [MON] pwrite: 0 | paddr: 0xc | pwdata: 0x0 | prdata: 0x7e
+# UVM_INFO ral_sequence.sv(96) @ 475: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] R3 -> Written: 126, Read: 126, Mirrored: 126
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 475: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   31
+# UVM_INFO :   40
 # UVM_WARNING :    0
-# UVM_ERROR :    3
+# UVM_ERROR :    5
 # UVM_FATAL :    0
 # ** Report counts by id
 # [DRV]     6
-# [MON]     9
+# [MON]    16
 # [Questa UVM]     2
 # [RNTST]     1
-# [SCOREBOARD]     9
-# [SEQ]     6
+# [SCOREBOARD]    16
+# [SEQ]     3
 # [TEST_DONE]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 275 ns  Iteration: 61  Instance: /tb
-# End time: 10:18:43 on Jul 24,2025, Elapsed time: 0:00:12
-# Errors: 0, Warnings: 0
+#    Time: 475 ns  Iteration: 61  Instance: /tb
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# Causality operation skipped due to absence of debug database file
+quit
+# End time: 12:25:09 on Jul 24,2025, Elapsed time: 0:14:57
+# Errors: 0, Warnings: 2

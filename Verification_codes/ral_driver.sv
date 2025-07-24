@@ -97,7 +97,7 @@ class ral_driver extends uvm_driver #(ral_seq_item);
     repeat(2) @(posedge vif.pclk);
     vif.penable <= 1'b1;
 
-    // Step 3: Read PRDATA after enable (for reads)
+    /* Step 3: Read PRDATA after enable (for reads)
     if (!tr.pwrite) begin
      repeat(2)  @(posedge vif.pclk);
       tr.prdata = vif.prdata;
@@ -105,6 +105,37 @@ class ral_driver extends uvm_driver #(ral_seq_item);
     end else begin
       `uvm_info("DRV", $sformatf("WRITE -> ADDR: 0x%0h, DATA: 0x%0h", tr.paddr, tr.pwdata), UVM_MEDIUM);
     end
+*/
+
+     if(tr.pwrite == 1'b1)
+  begin
+  @(posedge vif.pclk);
+  vif.presetn <= 1'b1;
+     vif.paddr <= tr.paddr;
+     vif.pwrite <= 1'b1;
+     vif.pwdata <= tr.pwdata;
+     vif.psel <= 1'b1;
+     repeat(2)@(posedge vif.pclk);
+     vif.penable <= 1'b1;
+     `uvm_info("DRV", $sformatf("Data Write -> Wdata : %0h",vif.pwdata),UVM_NONE);
+     @(posedge vif.pclk);
+     vif.psel <= 1'b0;
+     vif.penable <=1'b0;
+   end
+else
+  begin
+     @(posedge vif.pclk);
+     vif.pwrite <= 1'b0;
+     vif.paddr <= tr.paddr;
+     vif.psel <= 1'b1;
+     repeat(2)@(posedge vif.pclk);
+     vif.penable <= 1'b1;
+     `uvm_info("DRV", $sformatf("Data READ -> read data : %0h",vif.prdata),UVM_NONE);
+     @(posedge vif.pclk);
+     vif.psel <= 1'b0;
+     vif.penable <=1'b0;
+     tr.prdata = vif.prdata;
+  end
 
     // Step 4: Deassert
     @(posedge vif.pclk);

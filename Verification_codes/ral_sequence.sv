@@ -69,7 +69,7 @@ class ral_write_read_sequence extends uvm_sequence;
     uvm_reg_data_t   desired_val;
     uvm_reg_data_t   mirrored_val;
     uvm_reg_data_t   dout_t;
-/*
+
     ///////////////// R1 WRITE + READ ///////////////////////
     desired_val = 8'hA5;
     regmodel.r1.write(status, desired_val);
@@ -77,7 +77,8 @@ class ral_write_read_sequence extends uvm_sequence;
 
     mirrored_val = regmodel.r1.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("R1 -> Written: %0d, Read: %0d, Mirrored: %0d", desired_val, dout_t, mirrored_val), UVM_NONE);
-*/
+
+
     ///////////////// R2 WRITE + READ ///////////////////////
     desired_val = 8'h3C;
     regmodel.r2.write(status, desired_val);

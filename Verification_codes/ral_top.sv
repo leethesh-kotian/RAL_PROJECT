@@ -37,7 +37,7 @@ module tb;
   // UVM config DB and test start
   initial begin
     uvm_config_db #(virtual ral_if)::set(null, "*", "vif", vif);
-    run_test("ral_test");  // Use the actual test name defined with `uvm_component_utils(ral_test)`
+    run_test("ral_write_read_test");  // Use the actual test name defined with `uvm_component_utils(ral_test)`
   end
 
   // Dumpfile for waveform viewing
