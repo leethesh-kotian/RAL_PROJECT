@@ -17,11 +17,7 @@ class ral_test extends uvm_test;
     phase.raise_objection(this);
 
     seq = ral_sequence::type_id::create("seq");
-
-    // ✅ Assign regmodel handle before starting
     seq.regmodel = env.regmodel;
-
-    // ✅ Start the sequence on agent_inst.seqr (which is connected to RAL)
     seq.start(env.agent_inst.seqr);
 
     phase.drop_objection(this);
