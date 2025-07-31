@@ -50,3 +50,66 @@ class ral_write_read_test extends uvm_test;
     phase.drop_objection(this);
   endtask
 endclass
+
+
+class ral_reset_check_test extends uvm_test;
+  `uvm_component_utils(ral_reset_check_test)
+
+  ral_env env;
+
+  function new(string name = "ral_reset_check_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    env = ral_env::type_id::create("env", this);
+  endfunction
+
+  virtual task run_phase(uvm_phase phase);
+    ral_reset_check_sequence seq;
+    phase.raise_objection(this);
+
+    seq = ral_reset_check_sequence::type_id::create("seq");
+    seq.regmodel = env.regmodel;
+    seq.start(env.agent_inst.seqr);
+
+    phase.drop_objection(this);
+  endtask
+endclass
+
+
+
+class ral_backdoor_write_read_test extends uvm_test;
+  `uvm_component_utils(ral_backdoor_write_read_test)
+
+  ral_env env;
+
+  function new(string name = "ral_backdoor_write_read_test", uvm_component parent = null);
+    super.new(name, parent);
+  endfunction
+
+  virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    env = ral_env::type_id::create("env", this);
+  endfunction
+
+  virtual task run_phase(uvm_phase phase);
+    ral_backdoor_write_read_sequence seq;
+    phase.raise_objection(this);
+
+    seq = ral_backdoor_write_read_sequence::type_id::create("seq");
+    seq.regmodel = env.regmodel;
+    seq.start(null); // Backdoor access does not need sequencer
+
+    phase.drop_objection(this);
+  endtask
+endclass
+
+
+
+
+
+
+
+
