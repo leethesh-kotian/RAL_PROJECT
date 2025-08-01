@@ -98,7 +98,7 @@ class ral_write_read_sequence extends uvm_sequence;
     // Add more registers here similarly if needed
   endtask
 endclass
-
+/*
 class ral_reset_check_sequence extends uvm_sequence;
   `uvm_object_utils(ral_reset_check_sequence)
 
@@ -133,6 +133,95 @@ class ral_reset_check_sequence extends uvm_sequence;
     rdata   = regmodel.r2.get();
     rdata_m = regmodel.r2.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+  endtask
+endclass
+
+*/
+
+class ral_reset_check_sequence extends uvm_sequence;
+  `uvm_object_utils(ral_reset_check_sequence)
+
+  ral_reg_block regmodel;
+
+  function new(string name = "ral_reset_check_sequence");
+    super.new(name);
+  endfunction
+
+  task body;
+    uvm_status_e status;
+    bit [7:0] rdata, rdata_m;
+    bit [7:0] rst_val;
+    bit       has_rst;
+
+
+    ////////// REG1 Reset Check //////////
+    has_rst = regmodel.r1.has_reset();
+    `uvm_info("SEQ", $sformatf("Reset Present for REG1: %0b", has_rst), UVM_NONE);
+
+    rst_val = regmodel.r1.get_reset();
+    `uvm_info("SEQ", $sformatf("REG1 Reset Value (default): 0x%0h", rst_val), UVM_NONE);
+
+    rdata   = regmodel.r1.get();
+    rdata_m = regmodel.r1.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("Before Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    $display("-------------- Applying Default Reset to REG1 ---------------");
+    regmodel.r1.reset();
+    rdata   = regmodel.r1.get();
+    rdata_m = regmodel.r1.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    ////////// REG2 Reset Check //////////
+    has_rst = regmodel.r2.has_reset();
+    `uvm_info("SEQ", $sformatf("Reset Present for REG2: %0b", has_rst), UVM_NONE);
+
+    rst_val = regmodel.r2.get_reset();
+    `uvm_info("SEQ", $sformatf("REG2 Reset Value (default): 0x%0h", rst_val), UVM_NONE);
+
+    rdata   = regmodel.r2.get();
+    rdata_m = regmodel.r2.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("Before Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    $display("-------------- Applying Default Reset to REG2 ---------------");
+    regmodel.r2.reset();
+    rdata   = regmodel.r2.get();
+    rdata_m = regmodel.r2.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    ////////// REG3 Reset Check //////////
+    has_rst = regmodel.r3.has_reset();
+    `uvm_info("SEQ", $sformatf("Reset Present for REG3: %0b", has_rst), UVM_NONE);
+
+    rst_val = regmodel.r3.get_reset();
+    `uvm_info("SEQ", $sformatf("REG3 Reset Value (default): 0x%0h", rst_val), UVM_NONE);
+
+    rdata   = regmodel.r3.get();
+    rdata_m = regmodel.r3.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("Before Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    $display("-------------- Applying Default Reset to REG3 ---------------");
+    regmodel.r3.reset();
+    rdata   = regmodel.r3.get();
+    rdata_m = regmodel.r3.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    ////////// REG4 Reset Check //////////
+    has_rst = regmodel.r4.has_reset();
+    `uvm_info("SEQ", $sformatf("Reset Present for REG4: %0b", has_rst), UVM_NONE);
+
+    rst_val = regmodel.r4.get_reset();
+    `uvm_info("SEQ", $sformatf("REG4 Reset Value (default): 0x%0h", rst_val), UVM_NONE);
+
+    rdata   = regmodel.r4.get();
+    rdata_m = regmodel.r4.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("Before Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
+    $display("-------------- Applying Default Reset to REG4 ---------------");
+    regmodel.r4.reset();
+    rdata   = regmodel.r4.get();
+    rdata_m = regmodel.r4.get_mirrored_value();
+    `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
+
   endtask
 endclass
 

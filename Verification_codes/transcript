@@ -1,6 +1,6 @@
-# vsim -c -voptargs="+acc=r+w" work.tb 
-# Start time: 12:26:10 on Jul 31,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# vsim -c -do "run -all;exit;" tb 
+# Start time: 12:25:33 on Aug 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -22,6 +22,7 @@
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.ral_if(fast)
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
 # (C) 2007-2013 Mentor Graphics Corporation
@@ -44,29 +45,42 @@
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
-# UVM_INFO @ 0: reporter [RNTST] Running test ral_backdoor_write_read_test...
-# UVM_ERROR: Unable to deposit value into 'dut.r2.r2'
-#  Either the path is incorrect, or you may not have PLI/ACC visibility to that object.
-# UVM_INFO ral_sequence.sv(170) @ 0: reporter@@seq [SEQ] R2 (BACKDOOR) -> POKED with value: 60
-# UVM_ERROR: Unable to read value from 'dut.r2.r2'
-#  Either the path is incorrect, or you may not have PLI/ACC visibility to that object.
-# UVM_INFO ral_sequence.sv(174) @ 0: reporter@@seq [SEQ] R2 (BACKDOOR) -> PEEKED value: 0
-# UVM_INFO ral_sequence.sv(179) @ 0: reporter@@seq [SEQ] R2 (BACKDOOR) -> Desired: 0, Mirrored: 0
+# UVM_INFO @ 0: reporter [RNTST] Running test ral_reset_check_test...
+# UVM_INFO ral_sequence.sv(159) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Reset Present for REG1: 1
+# UVM_INFO ral_sequence.sv(162) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] REG1 Reset Value (default): 0x0
+# UVM_INFO ral_sequence.sv(166) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Before Reset -> Desired: 0x0, Mirrored: 0x0
+# -------------- Applying Default Reset to REG1 ---------------
+# UVM_INFO ral_sequence.sv(172) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] After Default Reset -> Desired: 0x0, Mirrored: 0x0
+# UVM_INFO ral_sequence.sv(176) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Reset Present for REG2: 1
+# UVM_INFO ral_sequence.sv(179) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] REG2 Reset Value (default): 0x76
+# UVM_INFO ral_sequence.sv(183) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Before Reset -> Desired: 0x0, Mirrored: 0x0
+# -------------- Applying Default Reset to REG2 ---------------
+# UVM_INFO ral_sequence.sv(189) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] After Default Reset -> Desired: 0x76, Mirrored: 0x76
+# UVM_INFO ral_sequence.sv(193) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Reset Present for REG3: 1
+# UVM_INFO ral_sequence.sv(196) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] REG3 Reset Value (default): 0x55
+# UVM_INFO ral_sequence.sv(200) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Before Reset -> Desired: 0x0, Mirrored: 0x0
+# -------------- Applying Default Reset to REG3 ---------------
+# UVM_INFO ral_sequence.sv(206) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] After Default Reset -> Desired: 0x55, Mirrored: 0x55
+# UVM_INFO ral_sequence.sv(210) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Reset Present for REG4: 1
+# UVM_INFO ral_sequence.sv(213) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] REG4 Reset Value (default): 0xff
+# UVM_INFO ral_sequence.sv(217) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] Before Reset -> Desired: 0x0, Mirrored: 0x0
+# -------------- Applying Default Reset to REG4 ---------------
+# UVM_INFO ral_sequence.sv(223) @ 0: uvm_test_top.env.agent_inst.seqr@@seq [SEQ] After Default Reset -> Desired: 0xff, Mirrored: 0xff
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 0: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :    7
+# UVM_INFO :   20
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
 # [Questa UVM]     2
 # [RNTST]     1
-# [SEQ]     3
+# [SEQ]    16
 # [TEST_DONE]     1
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 0 ns  Iteration: 218  Instance: /tb
-# End time: 12:26:20 on Jul 31,2025, Elapsed time: 0:00:10
+# End time: 12:25:35 on Aug 01,2025, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0

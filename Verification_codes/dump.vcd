@@ -1,5 +1,5 @@
 $date
-	Thu Jul 31 12:26:20 2025
+	Fri Aug  1 12:46:48 2025
 $end
 $version
 	QuestaSim Version 10.6c
@@ -9,3 +9,114 @@ $timescale
 $end
 
 $scope module tb $end
+$var reg 1 ! pclk $end
+$var reg 1 " presetn $end
+
+$scope module dut $end
+$var wire 1 # pclk $end
+$var wire 1 $ presetn $end
+$var wire 1 % paddr [31] $end
+$var wire 1 & paddr [30] $end
+$var wire 1 ' paddr [29] $end
+$var wire 1 ( paddr [28] $end
+$var wire 1 ) paddr [27] $end
+$var wire 1 * paddr [26] $end
+$var wire 1 + paddr [25] $end
+$var wire 1 , paddr [24] $end
+$var wire 1 - paddr [23] $end
+$var wire 1 . paddr [22] $end
+$var wire 1 / paddr [21] $end
+$var wire 1 0 paddr [20] $end
+$var wire 1 1 paddr [19] $end
+$var wire 1 2 paddr [18] $end
+$var wire 1 3 paddr [17] $end
+$var wire 1 4 paddr [16] $end
+$var wire 1 5 paddr [15] $end
+$var wire 1 6 paddr [14] $end
+$var wire 1 7 paddr [13] $end
+$var wire 1 8 paddr [12] $end
+$var wire 1 9 paddr [11] $end
+$var wire 1 : paddr [10] $end
+$var wire 1 ; paddr [9] $end
+$var wire 1 < paddr [8] $end
+$var wire 1 = paddr [7] $end
+$var wire 1 > paddr [6] $end
+$var wire 1 ? paddr [5] $end
+$var wire 1 @ paddr [4] $end
+$var wire 1 A paddr [3] $end
+$var wire 1 B paddr [2] $end
+$var wire 1 C paddr [1] $end
+$var wire 1 D paddr [0] $end
+$var wire 1 E pwdata [31] $end
+$var wire 1 F pwdata [30] $end
+$var wire 1 G pwdata [29] $end
+$var wire 1 H pwdata [28] $end
+$var wire 1 I pwdata [27] $end
+$var wire 1 J pwdata [26] $end
+$var wire 1 K pwdata [25] $end
+$var wire 1 L pwdata [24] $end
+$var wire 1 M pwdata [23] $end
+$var wire 1 N pwdata [22] $end
+$var wire 1 O pwdata [21] $end
+$var wire 1 P pwdata [20] $end
+$var wire 1 Q pwdata [19] $end
+$var wire 1 R pwdata [18] $end
+$var wire 1 S pwdata [17] $end
+$var wire 1 T pwdata [16] $end
+$var wire 1 U pwdata [15] $end
+$var wire 1 V pwdata [14] $end
+$var wire 1 W pwdata [13] $end
+$var wire 1 X pwdata [12] $end
+$var wire 1 Y pwdata [11] $end
+$var wire 1 Z pwdata [10] $end
+$var wire 1 [ pwdata [9] $end
+$var wire 1 \ pwdata [8] $end
+$var wire 1 ] pwdata [7] $end
+$var wire 1 ^ pwdata [6] $end
+$var wire 1 _ pwdata [5] $end
+$var wire 1 ` pwdata [4] $end
+$var wire 1 a pwdata [3] $end
+$var wire 1 b pwdata [2] $end
+$var wire 1 c pwdata [1] $end
+$var wire 1 d pwdata [0] $end
+$var wire 1 e psel $end
+$var wire 1 f pwrite $end
+$var wire 1 g penable $end
+$var wire 1 h prdata [31] $end
+$var wire 1 i prdata [30] $end
+$var wire 1 j prdata [29] $end
+$var wire 1 k prdata [28] $end
+$var wire 1 l prdata [27] $end
+$var wire 1 m prdata [26] $end
+$var wire 1 n prdata [25] $end
+$var wire 1 o prdata [24] $end
+$var wire 1 p prdata [23] $end
+$var wire 1 q prdata [22] $end
+$var wire 1 r prdata [21] $end
+$var wire 1 s prdata [20] $end
+$var wire 1 t prdata [19] $end
+$var wire 1 u prdata [18] $end
+$var wire 1 v prdata [17] $end
+$var wire 1 w prdata [16] $end
+$var wire 1 x prdata [15] $end
+$var wire 1 y prdata [14] $end
+$var wire 1 z prdata [13] $end
+$var wire 1 { prdata [12] $end
+$var wire 1 | prdata [11] $end
+$var wire 1 } prdata [10] $end
+$var wire 1 ~ prdata [9] $end
+$var wire 1 !! prdata [8] $end
+$var wire 1 "! prdata [7] $end
+$var wire 1 #! prdata [6] $end
+$var wire 1 $! prdata [5] $end
+$var wire 1 %! prdata [4] $end
+$var wire 1 &! prdata [3] $end
+$var wire 1 '! prdata [2] $end
+$var wire 1 (! prdata [1] $end
+$var wire 1 )! prdata [0] $end
+$var reg 4 *! cntrl [3:0] $end
+$var reg 32 +! reg1 [31:0] $end
+$var reg 32 ,! reg2 [31:0] $end
+$var reg 32 -! reg3 [31:0] $end
+$var reg 32 .! reg4 [31:0] $end
+$var reg 32 /! rdata_tmp [31:0] $end

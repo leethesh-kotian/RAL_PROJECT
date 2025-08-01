@@ -102,7 +102,7 @@ class ral_reg_block extends uvm_reg_block;
     r2 = slv_reg2::type_id::create("r2");
     r2.build();
     r2.configure(this);
-    r2.add_hdl_path_slice("r2",0,32);
+    r2.add_hdl_path_slice("reg2",0,32);
 
     r3 = slv_reg3::type_id::create("r3");
     r3.build();
@@ -119,9 +119,9 @@ class ral_reg_block extends uvm_reg_block;
     default_map.add_reg(r3, 'hc, "RW");
     default_map.add_reg(r4, 'h10, "RW");
     
-   // default_map.set_auto_predict(1);
+    default_map.set_auto_predict(0);
    // add_hdl_path ("dut", "RTL");
-    add_hdl_path("dut.r2","RTL");
+    add_hdl_path("tb.dut","RTL");
     lock_model();
   endfunction
 endclass
