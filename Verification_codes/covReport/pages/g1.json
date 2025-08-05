@@ -1,0 +1,18 @@
+var g_data = {
+g715:[{dummy:0},
+{name:'reg1_cov',f:1,type:1,id:716,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],parent:'715'},
+{name:'\\/ral_top_sv_unit::slv_reg1::reg1_cov ',f:1,type:2,id:718,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['per_instance','true']],cvg:'reg1_cov',parent:'716'}],
+c716:{name:'reg1_cov',type:1,pHash:'715',pPath:'/ral_top_sv_unit/slv_reg1',totals:[1,1,'100.00%','G',0,0,'0.00%','R'],cvp:[{dummy:0},
+{name:'#coverpoint__0#',f:1,type:4,id:717,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'716'}],crx:[{dummy:0}]},
+c718:{name:'\\/ral_top_sv_unit::slv_reg1::reg1_cov ',type:2,pHash:'715',pPath:'/ral_top_sv_unit/slv_reg1',totals:[1,1,'100.00%','G',0,0,'0.00%','R'],cvp:[{dummy:0},
+{name:'#coverpoint__0#',f:1,type:4,id:719,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'718'}],crx:[{dummy:0}]},
+g720:[{dummy:0},
+{name:'reg2_cov',f:1,type:1,id:721,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],parent:'720'},
+{name:'\\/ral_top_sv_unit::slv_reg2::reg2_cov ',f:1,type:2,id:723,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['per_instance','true']],cvg:'reg2_cov',parent:'721'}],
+c721:{name:'reg2_cov',type:1,pHash:'720',pPath:'/ral_top_sv_unit/slv_reg2',totals:[1,1,'100.00%','G',0,0,'0.00%','R'],cvp:[{dummy:0},
+{name:'#coverpoint__0#',f:1,type:4,id:722,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'721'}],crx:[{dummy:0}]},
+c723:{name:'\\/ral_top_sv_unit::slv_reg2::reg2_cov ',type:2,pHash:'720',pPath:'/ral_top_sv_unit/slv_reg2',totals:[1,1,'100.00%','G',0,0,'0.00%','R'],cvp:[{dummy:0},
+{name:'#coverpoint__0#',f:1,type:4,id:724,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],hasb:1,parent:'723'}],crx:[{dummy:0}]},
+dummyEnd:0
+};
+processCovergroupsData(g_data);

@@ -1,0 +1,5 @@
+var g_db_data = [
+{dummy:0},
+{name:'reg1_cov',f:1,type:6,id:716,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],hdlPath:'/ral_top_sv_unit/slv_reg1',parent:'715'},
+{name:'reg2_cov',f:1,type:6,id:721,tb:'1',h:'1',m:'0',hp:'100.00%',cov:['100.00%','G'],g:'100.00%',gp:['100.00%','G'],opts:[[],['merge_instance','auto(true)']],hdlPath:'/ral_top_sv_unit/slv_reg2',parent:'720'}];
+processConsCovergroupsData(g_db_data);

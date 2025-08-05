@@ -1,0 +1,5 @@
+var g_data = {'dummy':{null},
+'/ral_top_sv_unit/slv_reg1':{h:'715',g:1,z:1},
+'/ral_top_sv_unit/slv_reg2':{h:'720',g:1,z:1},
+'work.ral_top_sv_unit':{h:'3',z:1},
+'/ral_top_sv_unit':{h:'713',z:1}};

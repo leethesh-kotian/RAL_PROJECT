@@ -1,0 +1,8 @@
+var g_data = {
+c717:[4,'#coverpoint__0#',[],,'716',1,1,'reg1_cov','715','/ral_top_sv_unit/slv_reg1',[[],[0,'1','2',,'high']],[]],
+c719:[4,'#coverpoint__0#',[],,'718',2,1,'\\/ral_top_sv_unit::slv_reg1::reg1_cov ','715','/ral_top_sv_unit/slv_reg1',[[],[0,'1','2',,'high']],[]],
+c722:[4,'#coverpoint__0#',[],,'721',1,1,'reg2_cov','720','/ral_top_sv_unit/slv_reg2',[[],[0,'1','2',,'low']],[]],
+c724:[4,'#coverpoint__0#',[],,'723',2,1,'\\/ral_top_sv_unit::slv_reg2::reg2_cov ','720','/ral_top_sv_unit/slv_reg2',[[],[0,'1','2',,'low']],[]],
+dummyEnd:0
+};
+processCovergroupsData(g_data);

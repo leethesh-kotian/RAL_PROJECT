@@ -13,7 +13,7 @@ class slv_ctrl extends uvm_reg;
   endfunction
 endclass
 
-
+/*
 class slv_reg1 extends uvm_reg;
   `uvm_object_utils(slv_reg1)
   rand uvm_reg_field reg1;
@@ -28,9 +28,45 @@ class slv_reg1 extends uvm_reg;
 
   endfunction
 endclass
+*/
 
+class slv_reg1 extends uvm_reg;
+  `uvm_object_utils(slv_reg1)
+  rand uvm_reg_field reg1;
 
+  covergroup reg1_cov;
+    option.per_instance = 1;
+    coverpoint reg1.value[7:0] {
+ //     bins low    = {[0:63]};
+ //     bins med = {[64:127]};
+      bins high   = {[128:255]};
+    }
+  endgroup
 
+  function new(string name="slv_reg1");
+    super.new(name,32,UVM_CVR_FIELD_VALS); // Enable field value coverage
+    if (has_coverage(UVM_CVR_FIELD_VALS))
+      reg1_cov = new();
+  endfunction
+
+  virtual function void sample(uvm_reg_data_t data,
+                               uvm_reg_data_t byte_en,
+                               bit is_read,
+                               uvm_reg_map map);
+    reg1_cov.sample();
+  endfunction
+
+  virtual function void sample_values();
+    super.sample_values();
+    reg1_cov.sample();
+  endfunction
+
+  function void build();
+    reg1 = uvm_reg_field::type_id::create("reg1");
+    reg1.configure(this, 32, 0, "RW", 0, 32'hA5A5_0000, 1, 1, 1);
+  endfunction
+endclass
+/*
 class slv_reg2 extends uvm_reg;
   `uvm_object_utils(slv_reg2)
   rand uvm_reg_field reg2;
@@ -44,6 +80,46 @@ class slv_reg2 extends uvm_reg;
     reg2.configure(this, 32, 0, "RW", 0,  32'h1234_9876, 1, 1, 1);
   endfunction
 endclass
+
+*/
+
+class slv_reg2 extends uvm_reg;
+  `uvm_object_utils(slv_reg2)
+  rand uvm_reg_field reg2;
+
+  covergroup reg2_cov;
+    option.per_instance = 1;
+    coverpoint reg2.value[7:0] {
+    bins low    = {[0:63]};
+    bins mid = {[64:127]};
+    bins high   = {[128:255]};
+    }
+  endgroup
+
+  function new(string name="reg2");
+    super.new(name,32,UVM_CVR_FIELD_VALS);
+    if (has_coverage(UVM_CVR_FIELD_VALS))
+      reg2_cov = new();
+  endfunction
+
+  virtual function void sample(uvm_reg_data_t data,uvm_reg_data_t byte_en,bit is_read,uvm_reg_map map);
+    reg2_cov.sample();
+  endfunction
+
+
+  virtual function void sample_values();
+    super.sample_values();
+    reg2_cov.sample();
+    $display("the coverage is %0.2f",reg2_cov.get_inst_coverage);
+  endfunction
+
+  function void build();
+    reg2 = uvm_reg_field::type_id::create("reg2");
+    reg2.configure(this, 32, 0, "RW", 0, 32'h1234_9876, 1, 1, 1);
+  endfunction
+endclass
+
+
 
 
 
@@ -119,7 +195,7 @@ class ral_reg_block extends uvm_reg_block;
     default_map.add_reg(r3, 'hc, "RW");
     default_map.add_reg(r4, 'h10, "RW");
     
-    default_map.set_auto_predict(0);
+    default_map.set_auto_predict(1);
    // add_hdl_path ("dut", "RTL");
     add_hdl_path("tb.dut","RTL");
     lock_model();
