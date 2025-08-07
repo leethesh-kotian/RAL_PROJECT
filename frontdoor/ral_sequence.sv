@@ -142,6 +142,7 @@ class ral_reset_check_sequence extends uvm_sequence;
 
     $display("-------------- Applying Default Reset to REG1 ---------------");
     regmodel.r1.reset();
+    regmodel.r1.mirror(status,UVM_CHECK,UVM_FRONTDOOR);
     rdata   = regmodel.r1.get();
     rdata_m = regmodel.r1.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
@@ -159,6 +160,7 @@ class ral_reset_check_sequence extends uvm_sequence;
 
     $display("-------------- Applying Default Reset to REG2 ---------------");
     regmodel.r2.reset();
+    regmodel.r2.mirror(status,UVM_CHECK,UVM_FRONTDOOR);
     rdata   = regmodel.r2.get();
     rdata_m = regmodel.r2.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
@@ -176,6 +178,7 @@ class ral_reset_check_sequence extends uvm_sequence;
 
     $display("-------------- Applying Default Reset to REG3 ---------------");
     regmodel.r3.reset();
+    regmodel.r3.mirror(status,UVM_CHECK,UVM_FRONTDOOR);
     rdata   = regmodel.r3.get();
     rdata_m = regmodel.r3.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
@@ -193,6 +196,7 @@ class ral_reset_check_sequence extends uvm_sequence;
 
     $display("-------------- Applying Default Reset to REG4 ---------------");
     regmodel.r4.reset();
+    regmodel.r4.mirror(status,UVM_CHECK,UVM_FRONTDOOR);
     rdata   = regmodel.r4.get();
     rdata_m = regmodel.r4.get_mirrored_value();
     `uvm_info("SEQ", $sformatf("After Default Reset -> Desired: 0x%0h, Mirrored: 0x%0h", rdata, rdata_m), UVM_NONE);
