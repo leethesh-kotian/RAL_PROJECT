@@ -2,33 +2,43 @@ class slv_ctrl extends uvm_reg;
   `uvm_object_utils(slv_ctrl)
   rand uvm_reg_field ctrl;
 
+  // -------------------- Covergroup --------------------
+  covergroup ctrl_cov;
+    option.per_instance = 1;
+    coverpoint ctrl.value[3:0] {
+      bins low  = {[0:15]};
+   //   bins med  = {[4:11]};
+     // bins high = {[12:15]};
+    }
+  endgroup
+
+  // -------------------- Constructor --------------------
   function new(string name="slv_ctrl");
-    super.new(name, 4, UVM_NO_COVERAGE);
+    super.new(name, 4,UVM_CVR_FIELD_VALS); // Enable value coverage
+    if (has_coverage(UVM_CVR_FIELD_VALS))
+      ctrl_cov = new();
   endfunction
 
+  // -------------------- Sample on Access --------------------
+  virtual function void sample(uvm_reg_data_t data,
+                               uvm_reg_data_t byte_en,
+                               bit is_read,
+                               uvm_reg_map map);
+    ctrl_cov.sample();
+  endfunction
+
+  // -------------------- Sample on Explicit Call --------------------
+  virtual function void sample_values();
+    super.sample_values();
+    ctrl_cov.sample();
+  endfunction
+
+  // -------------------- Build Method --------------------
   function void build();
-    ctrl= uvm_reg_field::type_id::create("ctrl");
+    ctrl = uvm_reg_field::type_id::create("ctrl");
     ctrl.configure(this, 4, 0, "RW", 0, 0, 1, 1, 1);
- 
   endfunction
 endclass
-
-/*
-class slv_reg1 extends uvm_reg;
-  `uvm_object_utils(slv_reg1)
-  rand uvm_reg_field reg1;
-
-  function new(string name="slv_reg1");
-    super.new(name, 32, UVM_NO_COVERAGE);
-  endfunction
-
-  function void build();
-    reg1 = uvm_reg_field::type_id::create("reg1");
-    reg1.configure(this, 32, 0, "RW", 0, 32'hA5A5_0000, 1, 1, 1);
-
-  endfunction
-endclass
-*/
 
 class slv_reg1 extends uvm_reg;
   `uvm_object_utils(slv_reg1)
@@ -36,10 +46,11 @@ class slv_reg1 extends uvm_reg;
 
   covergroup reg1_cov;
     option.per_instance = 1;
-    coverpoint reg1.value[7:0] {
- //     bins low    = {[0:63]};
- //     bins med = {[64:127]};
-      bins high   = {[128:255]};
+    coverpoint reg1.value[31:0] {
+      bins low  = {[0:32'hFFFF_FFFF]};
+      //bins low    = {[0:63]};
+      //bins med = {[64:127]};
+      //bins high   = {[128:255]};
     }
   endgroup
 
@@ -66,22 +77,7 @@ class slv_reg1 extends uvm_reg;
     reg1.configure(this, 32, 0, "RW", 0, 32'hA5A5_0000, 1, 1, 1);
   endfunction
 endclass
-/*
-class slv_reg2 extends uvm_reg;
-  `uvm_object_utils(slv_reg2)
-  rand uvm_reg_field reg2;
 
-  function new(string name="slv_reg2");
-    super.new(name, 32, UVM_NO_COVERAGE);
-  endfunction
-
-  function void build();
-    reg2 = uvm_reg_field::type_id::create("reg2");
-    reg2.configure(this, 32, 0, "RW", 0,  32'h1234_9876, 1, 1, 1);
-  endfunction
-endclass
-
-*/
 
 class slv_reg2 extends uvm_reg;
   `uvm_object_utils(slv_reg2)
@@ -89,10 +85,11 @@ class slv_reg2 extends uvm_reg;
 
   covergroup reg2_cov;
     option.per_instance = 1;
-    coverpoint reg2.value[7:0] {
-    bins low    = {[0:63]};
-    bins mid = {[64:127]};
-    bins high   = {[128:255]};
+    coverpoint reg2.value[31:0] {
+      bins low  = {[0:32'hFFFF_FFFF]};
+    //bins low    = {[0:63]};
+   // bins mid = {[64:127]};
+   // bins high   = {[128:255]};
     }
   endgroup
 
@@ -120,32 +117,87 @@ class slv_reg2 extends uvm_reg;
 endclass
 
 
-
-
-
-
 class slv_reg3 extends uvm_reg;
   `uvm_object_utils(slv_reg3)
   rand uvm_reg_field reg3;
 
+  // -------------------- Covergroup --------------------
+  covergroup reg3_cov;
+    option.per_instance = 1;
+    coverpoint reg3.value[31:0] {
+      bins low  = {[0:32'hFFFF_FFFF]};
+  //    bins med  = {[64:127]};
+    //  bins high = {[128:255]};
+    }
+  endgroup
+
+  // -------------------- Constructor --------------------
   function new(string name="slv_reg3");
-    super.new(name, 32, UVM_NO_COVERAGE);
+    super.new(name, 32, UVM_CVR_FIELD_VALS);
+    if (has_coverage(UVM_CVR_FIELD_VALS))
+      reg3_cov = new();
   endfunction
 
+  // -------------------- Sample on Access --------------------
+  virtual function void sample(uvm_reg_data_t data,
+                               uvm_reg_data_t byte_en,
+                               bit is_read,
+                               uvm_reg_map map);
+    reg3_cov.sample();
+  endfunction
+
+  // -------------------- Sample on Explicit Call --------------------
+  virtual function void sample_values();
+    super.sample_values();
+    reg3_cov.sample();
+  endfunction
+
+  // -------------------- Build Method --------------------
   function void build();
     reg3 = uvm_reg_field::type_id::create("reg3");
-    reg3.configure(this, 32, 0, "RW", 0,  32'h5A5A_5555, 1, 1, 1);
+    reg3.configure(this, 32, 0, "RW", 0, 32'h5A5A_5555, 1, 1, 1);
   endfunction
 endclass
+
+
 
 class slv_reg4 extends uvm_reg;
   `uvm_object_utils(slv_reg4)
   rand uvm_reg_field reg4;
 
+  // -------------------- Covergroup --------------------
+  covergroup reg4_cov;
+    option.per_instance = 1;
+    coverpoint reg4.value[31:0] {
+      bins low  = {[0:32'hFFFF_FFFF]};
+      //bins low  = {[0:63]};
+      //bins med  = {[64:127]};
+     // bins high = {[128:255]};
+    }
+  endgroup
+
+  // -------------------- Constructor --------------------
   function new(string name="slv_reg4");
-    super.new(name, 32, UVM_NO_COVERAGE);
+    super.new(name, 32, UVM_CVR_FIELD_VALS);
+    if (has_coverage(UVM_CVR_FIELD_VALS))
+      reg4_cov = new();
   endfunction
 
+  // -------------------- Sample on Access --------------------
+  virtual function void sample(uvm_reg_data_t data,
+                               uvm_reg_data_t byte_en,
+                               bit is_read,
+                               uvm_reg_map map);
+    reg4_cov.sample();
+  endfunction
+
+  // -------------------- Sample on Explicit Call --------------------
+  virtual function void sample_values();
+    super.sample_values();
+    reg4_cov.sample();
+  endfunction
+
+  // -------------------- Build Method --------------------
   function void build();
     reg4 = uvm_reg_field::type_id::create("reg4");
     reg4.configure(this, 32, 0, "RW", 0, 32'h0000_FFFF, 1, 1, 1);
