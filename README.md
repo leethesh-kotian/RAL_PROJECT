@@ -9,3 +9,10 @@ This project demonstrates a UVM (Universal Verification Methodology) testbench f
 - Coverage collection with field-level bins.
 - Reset verification and RTL/RAL consistency checks.
 
+## Specifications
+
+[specification 1RAL.docx](https://github.com/user-attachments/files/21670269/specification.1RAL.docx)
+
+
+
+
