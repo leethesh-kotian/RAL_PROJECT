@@ -13,6 +13,29 @@ This project demonstrates a UVM (Universal Verification Methodology) testbench f
 
 [specification 1RAL.docx](https://github.com/user-attachments/files/21670269/specification.1RAL.docx)
 
+## Test cases
+Test Case 1: Register Write and Read via Frontdoor
+Objective: Verify that all registers can be written and read using frontdoor access.
+
+Test Case 2: Reset Value Check
+Objective: Confirm the default reset value of each register matches the specification.
+
+Test Case 3: Register Write and Read via Backdoor
+Objective: Verify that all registers can be written and read using backdoor access.
+
+## Result
+Write and Read via Frontdoor
+
+<img width="1232" height="362" alt="Screenshot 2025-08-07 130131" src="https://github.com/user-attachments/assets/ce181e2f-cd90-447a-b2bf-80f5ce8159ad" />
+
+
+
+
+
+
+
+
+
 
 
 
