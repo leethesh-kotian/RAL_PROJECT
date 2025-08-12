@@ -36,6 +36,19 @@ Coverage Report
 
 <img width="1067" height="548" alt="Screenshot 2025-08-07 125400" src="https://github.com/user-attachments/assets/b3217c28-43f2-4f43-8f0c-53975dad9d36" />
 
+## Result for Backdoor
+command to excute:
+vsim <top level model> -voptargs=+acc=npr -l <top level model>.log -c -do "run -all;quit;"
+
+Write and Read via Backdoor
+
+<img width="1232" height="362" alt="Screenshot 2025-08-07 130131" src="https://github.com/user-attachments/assets/b9f01a82-932c-4186-b07d-c4166c7ffaec" />
+
+
+
+
+
+
 
 
 
